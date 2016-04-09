@@ -5,7 +5,8 @@ var Board = React.createClass({
   getInitialState: function() {
     return {
       currentPlayer: "X",
-      grid: ["", "", "", "", "", "", "", "", ""]
+      grid: ["", "", "", "", "", "", "", "", ""],
+      winner: false
     }
   },
 
@@ -32,6 +33,14 @@ var Board = React.createClass({
     return this.state.currentPlayer === "X" ? "O" : "X";
   },
 
+  resetBoard: function() {
+    this.setState({
+      currentPlayer: "X",
+      grid: ["", "", "", "", "", "", "", "", ""],
+      winner: false
+    })
+  },
+
   placeMark: function(e) {
     var pos = parseInt(e.target.id);
     var gridToUpdate = this.state.grid;
@@ -44,11 +53,14 @@ var Board = React.createClass({
   },
 
   render: function() {
+    var resetButton;
     var winnerText;
     if (this.state.winner) {
       winnerText = <h2>CONGRATS {this.state.currentPlayer}</h2>;
+      resetButton = <button onClick={this.resetBoard}>Play Again</button>
     } else {
       winnerText = <div></div>
+      resetButton = <div></div>
     }
     var positions = this.state.grid.map(function(spot, index) {
       return <Position id={index} key={index} mark={spot} />
@@ -56,6 +68,7 @@ var Board = React.createClass({
     return (
       <div>
         {winnerText}
+        {resetButton}
         <ul className="grid group" onClick={this.placeMark}>
           {positions}
         </ul>
