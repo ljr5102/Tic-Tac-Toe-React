@@ -1,4 +1,5 @@
-html, body, div, ul, li, h2, button{
+html, body, div, ul, li, h2, button
+footer, a {
   border: 0;
   outline: 0;
   margin: 0;
@@ -34,11 +35,18 @@ ul {
   clear: both;
 }
 
+.game {
+  width: 1095px;
+  margin: 0 auto;
+}
+
 .grid {
   margin: 0 auto;
   width: 612px;
-  border-top: 4px solid black;
-  border-left: 4px solid black;
+  border-top: 5px solid black;
+  border-left: 5px solid black;
+  margin-top: 10px;
+  background: white;
 }
 
 .grid > li {
@@ -50,4 +58,51 @@ ul {
   min-height: 150px;
   line-height: 1.5;
   text-align: center;
+}
+
+.grid > li:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
+
+.header-text {
+  text-align: center;
+  padding: 5px;
+  font-size: 24px;
+}
+
+.winner-text {
+  color: black;
+  text-align: center;
+  font-size: 36px;
+}
+
+.reset-button {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background: lightgreen;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+  margin-top: 10px;
+  margin-right: 240px;
+}
+
+.current-player-text {
+  text-align: center;
+}
+
+.footer-text {
+  margin-left: 330px;
+  margin-top: 15px;
+}
+
+.footer-text a {
+  text-decoration: underline;
+}
+
+.footer-text a:hover {
+  color: red;
 }

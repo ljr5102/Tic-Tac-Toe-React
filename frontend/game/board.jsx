@@ -29,6 +29,15 @@ var Board = React.createClass({
     return false;
   },
 
+  gameOver: function() {
+    for (var i = 0; i < this.state.grid.length; i++) {
+      if (this.state.grid[i] === "") {
+        return false;
+      }
+    }
+    return true;
+  },
+
   nextPlayer: function() {
     return this.state.currentPlayer === "X" ? "O" : "X";
   },
@@ -41,37 +50,56 @@ var Board = React.createClass({
     })
   },
 
+  positionTaken: function(id) {
+    if (this.state.grid[id] !== "") {
+      return true
+    }
+    return false;
+  },
+
   placeMark: function(e) {
     var pos = parseInt(e.target.id);
-    var gridToUpdate = this.state.grid;
-    gridToUpdate[pos] = this.state.currentPlayer;
-    if (this.checkForWinner(gridToUpdate)) {
-      this.setState({grid: gridToUpdate, winner: this.state.currentPlayer});
+    if (this.positionTaken(pos)) {
+      alert("Uh-oh!  Looks like that spot is taken :|");
     } else {
-      this.setState({grid: gridToUpdate, currentPlayer: this.nextPlayer()});
+      var gridToUpdate = this.state.grid;
+      gridToUpdate[pos] = this.state.currentPlayer;
+      if (this.checkForWinner(gridToUpdate)) {
+        this.setState({grid: gridToUpdate, winner: this.state.currentPlayer});
+      } else {
+        this.setState({grid: gridToUpdate, currentPlayer: this.nextPlayer()});
+      }
     }
   },
 
   render: function() {
     var resetButton;
     var winnerText;
+    var currentPlayerText;
     if (this.state.winner) {
-      winnerText = <h2>CONGRATS {this.state.currentPlayer}</h2>;
-      resetButton = <button onClick={this.resetBoard}>Play Again</button>
+      winnerText = <h2 className="winner-text">{this.state.currentPlayer} WINS!</h2>
+      resetButton = <button className="reset-button" onClick={this.resetBoard}>Play Again</button>
+      currentPlayerText = <div></div>
+    } else if (this.gameOver()) {
+      winnerText = <h2 className="winner-text">No winner :|</h2>
+      resetButton = <button className="reset-button" onClick={this.resetBoard}>Play Again</button>
+      currentPlayerText = <div></div>
     } else {
       winnerText = <div></div>
       resetButton = <div></div>
+      currentPlayerText = <div className="current-player-text">{this.state.currentPlayer}, it is your turn!</div>
     }
     var positions = this.state.grid.map(function(spot, index) {
       return <Position id={index} key={index} mark={spot} />
     });
     return (
-      <div>
+      <div className="game group">
         {winnerText}
-        {resetButton}
+        {currentPlayerText}
         <ul className="grid group" onClick={this.placeMark}>
           {positions}
         </ul>
+        {resetButton}
       </div>
     )
   }
