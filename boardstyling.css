@@ -36,7 +36,6 @@ ul {
 
 .grid {
   margin: 0 auto;
-  background: blue;
   width: 612px;
   border-top: 4px solid black;
   border-left: 4px solid black;
@@ -44,7 +43,6 @@ ul {
 
 .grid > li {
   font-size: 100px;
-  background: yellow;
   border-right: 4px solid black;
   border-bottom: 4px solid black;
   float: left;

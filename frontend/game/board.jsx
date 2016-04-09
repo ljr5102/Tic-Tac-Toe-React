@@ -28,14 +28,19 @@ var Board = React.createClass({
     return false;
   },
 
+  nextPlayer: function() {
+    return this.state.currentPlayer === "X" ? "O" : "X";
+  },
+
   placeMark: function(e) {
     var pos = parseInt(e.target.id);
     var gridToUpdate = this.state.grid;
     gridToUpdate[pos] = this.state.currentPlayer;
     if (this.checkForWinner(gridToUpdate)) {
       this.setState({grid: gridToUpdate, winner: this.state.currentPlayer});
+    } else {
+      this.setState({grid: gridToUpdate, currentPlayer: this.nextPlayer()});
     }
-    this.setState({grid: gridToUpdate});
   },
 
   render: function() {
