@@ -1,0 +1,55 @@
+html, body, div, ul, li, h2 {
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  background: transparent;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+  font: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  background: lightgray;
+  color: black;
+  font-weight: bold;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+.group:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.grid {
+  margin: 0 auto;
+  background: blue;
+  width: 612px;
+  border-top: 4px solid black;
+  border-left: 4px solid black;
+}
+
+.grid > li {
+  font-size: 100px;
+  background: yellow;
+  border-right: 4px solid black;
+  border-bottom: 4px solid black;
+  float: left;
+  width: 200px;
+  min-height: 150px;
+  line-height: 1.5;
+  text-align: center;
+}
