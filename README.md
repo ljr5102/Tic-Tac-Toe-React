@@ -4,15 +4,15 @@
 ![View] (/assets/images/game_view.png)
 
 ## Getting Started
-1.  Clone this repository
+1.  Clone this repository:
 
   $ git clone https://github.com/ljr5102/Tic-Tac-Toe-React.git
 
-2.  Run npm install command
+2.  Run npm install command:
 
   $ npm install
 
-3.  Start up webpack
+3.  Start up webpack:
 
   $ webpack --watch
 
