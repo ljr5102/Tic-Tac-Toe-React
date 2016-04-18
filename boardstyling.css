@@ -47,6 +47,7 @@ ul {
   border-left: 5px solid black;
   margin-top: 10px;
   background: white;
+  margin-bottom: 10px;
 }
 
 .grid > li {
@@ -94,15 +95,32 @@ ul {
   text-align: center;
 }
 
-.footer-text {
-  margin-left: 330px;
-  margin-top: 15px;
+.footer {
+  margin: 0 auto;
+  width: 800px;
 }
 
-.footer-text a {
-  text-decoration: underline;
+.footer-links {
+  margin: 0 auto;
+  width: 252px;
 }
 
-.footer-text a:hover {
-  color: red;
+.footer-links > li {
+  float: left;
+  padding: 0px 5px;
+  margin: 0px 10px;
+}
+
+.footer-links > li > a {
+  padding: 2px;
+  display: block;
+}
+
+.footer-links > li > a:hover {
+  background: yellow;
+  border-radius: 3px;
+}
+
+.footer-links > li > a > img {
+  width: 50px;
 }
